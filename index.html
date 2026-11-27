@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luying Louise He</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Palette taken from the materials themselves:
+     pellicle  — wet bacterial cellulose, cool and slightly green
+     emeraldine— polyaniline emeraldine salt, a true pigmented green-black
+     colloid   — sputtered gold / AuNP                                   */
+  --pellicle:#EDEFE8;
+  --pellicle-deep:#E3E7DE;
+  --emeraldine:#15312A;
+  --emeraldine-mid:#2F5A4C;
+  --colloid:#B0862F;
+  --colloid-dark:#6F5118;
+  --colloid-light:#D4A94A;
+  --measure:64ch;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--pellicle);color:var(--emeraldine);
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  font-size:clamp(16px,.55vw + 14.4px,18px);line-height:1.6;
+  font-feature-settings:"ss01";
+}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:400;line-height:1.08;margin:0;
+  font-variation-settings:"SOFT" 30,"WONK" 1}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--colloid);outline-offset:3px;border-radius:2px}
+.band{padding:clamp(3.5rem,7vw,7rem) clamp(1.25rem,5vw,3rem)}
+.inner{max-width:1080px;margin:0 auto}
+.dark{background:var(--emeraldine);color:var(--pellicle)}
+.dark a{color:var(--colloid-light)}
+.tint{background:var(--pellicle-deep)}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(3rem,6vw,5rem)}
+.hero-grid{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:1fr;align-items:center}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.nameplate{font-size:clamp(.82rem,2vw,.95rem);letter-spacing:.01em;color:var(--emeraldine-mid);margin:0 0 1.75rem}
+.nameplate strong{font-weight:600;color:var(--emeraldine)}
+h1{font-size:clamp(3rem,9vw,5.6rem);font-weight:300;letter-spacing:-.025em;margin-bottom:1.5rem}
+h1 em{font-style:italic;font-variation-settings:"SOFT" 60,"WONK" 1}
+.lede{max-width:50ch;font-size:clamp(1.02rem,1.6vw,1.17rem);color:var(--emeraldine-mid);margin:0 0 2rem}
+.lede b{font-weight:500;color:var(--emeraldine)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:0;padding:0;list-style:none;font-size:.95rem}
+.links a{text-decoration:none;border-bottom:1.5px solid var(--colloid);padding-bottom:1px}
+.links a:hover{background:var(--colloid);color:var(--pellicle);border-color:transparent}
+
+/* specimen frame — swap the SVG inside for a real micrograph */
+.specimen{position:relative;aspect-ratio:4/5;background:var(--emeraldine);overflow:hidden}
+.specimen svg{display:block;width:100%;height:100%}
+.specimen figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;
+  background:linear-gradient(transparent,rgba(21,49,42,.92) 55%);
+  color:var(--pellicle);font-size:.76rem;line-height:1.35}
+.specimen figcaption span{color:var(--colloid-light)}
+
+/* ---------- section headings ---------- */
+.band h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:300;letter-spacing:-.015em;margin-bottom:.6rem}
+.band-intro{max-width:var(--measure);color:var(--emeraldine-mid);margin:0 0 2.75rem}
+.dark .band-intro{color:#A9BFB4}
+
+/* ---------- three threads ---------- */
+.threads{display:grid;gap:2.5rem;grid-template-columns:1fr;counter-reset:thread}
+@media(min-width:760px){.threads{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.thread{border-top:2px solid var(--colloid);padding-top:1.1rem}
+.thread h3{font-size:1.5rem;font-weight:400;margin-bottom:.6rem}
+.thread p{margin:0;font-size:.95rem;color:#A9BFB4;max-width:40ch}
+.thread .num{font-family:Fraunces,serif;font-size:.85rem;color:var(--colloid-light);display:block;margin-bottom:.4rem}
+
+/* ---------- work ---------- */
+.work{display:grid;gap:3rem}
+.entry{display:grid;gap:1.5rem;grid-template-columns:1fr;align-items:start}
+@media(min-width:800px){.entry{grid-template-columns:260px 1fr;gap:2.25rem}}
+.plate{aspect-ratio:4/3;background:var(--emeraldine);position:relative;overflow:hidden}
+.plate svg{display:block;width:100%;height:100%}
+.entry h3{font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:400;margin-bottom:.5rem;letter-spacing:-.01em}
+.venue{font-size:.86rem;color:var(--emeraldine-mid);margin:0 0 .85rem}
+.venue em{font-style:italic}
+.entry p.gloss{margin:0 0 .9rem;max-width:58ch;font-size:.96rem}
+.flag{display:inline-block;font-size:.73rem;font-weight:600;background:var(--colloid);color:var(--emeraldine);
+  padding:.18rem .5rem;margin-bottom:.7rem}
+.doi{font-size:.84rem;color:var(--colloid-dark);text-decoration:none;border-bottom:1px solid currentColor}
+.doi:hover{background:var(--colloid);color:var(--emeraldine);border-color:transparent}
+
+/* ---------- two-column lists ---------- */
+.cols{display:grid;gap:3rem;grid-template-columns:1fr}
+@media(min-width:800px){.cols{grid-template-columns:1.15fr .85fr;gap:4rem}}
+.cols h3{font-size:1.05rem;font-weight:600;font-family:"Instrument Sans",sans-serif;
+  margin-bottom:1.1rem;padding-bottom:.5rem;border-bottom:1.5px solid var(--colloid)}
+.stack{list-style:none;margin:0;padding:0}
+.stack li{padding:.65rem 0;border-bottom:1px solid rgba(47,90,76,.18);font-size:.93rem;line-height:1.5}
+.stack li:last-child{border-bottom:0}
+.stack .yr{color:var(--emeraldine-mid);font-size:.84rem}
+.stack b{font-weight:500}
+
+/* ---------- path ---------- */
+.path{list-style:none;margin:0;padding:0;border-left:2px solid var(--colloid)}
+.path li{padding:0 0 1.9rem 1.5rem;position:relative}
+.path li:last-child{padding-bottom:0}
+.path li::before{content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;
+  background:var(--pellicle);border:2px solid var(--colloid);border-radius:50%}
+.path .role{font-weight:500}
+.path .where{color:var(--emeraldine-mid);font-size:.92rem}
+.path .yr{color:var(--emeraldine-mid);font-size:.82rem;display:block;margin-top:.15rem}
+
+/* ---------- footer ---------- */
+.foot{display:grid;gap:2rem;grid-template-columns:1fr;align-items:center}
+@media(min-width:700px){.foot{grid-template-columns:120px 1fr}}
+.portrait{width:120px;height:120px;background:var(--emeraldine-mid);overflow:hidden;border-radius:50%}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.foot h2{margin-bottom:.75rem}
+.foot p{margin:0 0 1.25rem;color:#A9BFB4;max-width:48ch}
+.colophon{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid rgba(237,239,232,.18);
+  font-size:.8rem;color:#8AA399}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="band hero">
+  <div class="inner hero-grid">
+    <div>
+      <p class="nameplate"><strong>Luying Louise He</strong> &nbsp;·&nbsp; PhD candidate, Materials Science &amp; Engineering &nbsp;·&nbsp; University of Massachusetts Amherst</p>
+      <h1>I grow<br><em>materials.</em></h1>
+      <p class="lede">Most engineering materials are extruded, melted or cast. Mine are <b>fermented</b> — assembled by bacteria and yeast in sweet tea, at room temperature and atmospheric pressure. My research is about what happens next: how to control what grows, how to make it do a job, and how to take it back apart into something new.</p>
+      <ul class="links">
+        <li><a href="mailto:luyinghe@umass.edu">luyinghe@umass.edu</a></li>
+        <li><a href="https://scholar.google.com/">Google&nbsp;Scholar</a></li>
+        <li><a href="https://www.linkedin.com/in/luying-louise-he/">LinkedIn</a></li>
+        <li><a href="https://orcid.org/0000-0003-2181-0822">ORCID</a></li>
+      </ul>
+    </div>
+
+    <!-- SWAP POINT 1 — replace the <svg> below with:
+         <img src="images/fiber-sem.jpg" alt="SEM micrograph of the cellulose fiber network">
+         Best candidate: Figure 3A or 3B of the Biomacromolecules paper. -->
+    <figure class="specimen" style="margin:0">
+      <svg id="mesh" viewBox="0 0 400 500" role="img" aria-label="Illustration of a randomly oriented bacterial cellulose fiber network"></svg>
+      <figcaption><span>Specimen</span> — bacterial cellulose fiber network, mean diameter 0.06&nbsp;µm, crystallinity index 66.7%</figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ THREADS ============ -->
+<section class="band dark">
+  <div class="inner">
+    <h2>Three questions, one material</h2>
+    <p class="band-intro">A kombucha pellicle is a nonwoven mat of cellulose nanofibers that a microbial consortium builds at the air–liquid interface over about two weeks. Everything I work on hangs off that one fact.</p>
+    <div class="threads">
+      <article class="thread">
+        <span class="num">i</span>
+        <h3>Control the growth</h3>
+        <p>Inoculum, carbon source, nutrient load, temperature, pH. Five variables, systematically swept, moved mat thickness roughly eighteenfold and turned a kitchen ferment into a reproducible process with a defined operating window.</p>
+      </article>
+      <article class="thread">
+        <span class="num">ii</span>
+        <h3>Give it a job</h3>
+        <p>Filtration membranes that can be rinsed and reused. Conductive versions coated by in-situ polyaniline polymerization or gold deposition, so a grown material can also carry current.</p>
+      </article>
+      <article class="thread">
+        <span class="num">iii</span>
+        <h3>Take it back</h3>
+        <p>Cellulase dissolves a worn-out mat in 72 hours at better than 90% recovery. The recovered solids get electrospun into a second-generation nanofiber mat. The material is a feedstock, not waste.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK ============ -->
+<section class="band">
+  <div class="inner">
+    <h2>Selected work</h2>
+    <p class="band-intro">Both first-author papers are open access under CC&#8209;BY&nbsp;4.0.</p>
+
+    <div class="work">
+
+      <article class="entry">
+        <!-- SWAP POINT 2 — Figure 8A: the infant onesie grown from kombucha cellulose.
+             This is the single most memorable image you have. Use it here. -->
+        <figure class="plate" style="margin:0">
+          <svg viewBox="0 0 200 150" role="img" aria-label="Diagram of a grown textile being dissolved and respun"><g fill="none" stroke="#D4A94A" stroke-width="1.6"><path d="M62 44c0-7 6-12 13-12h25c7 0 13 5 13 12v8l14 7v16l-14-5v52c0 5-4 9-9 9H71c-5 0-9-4-9-9V70l-14 5V59l14-7z"/><circle cx="100" cy="86" r="30" stroke-dasharray="3 5" opacity=".55"/></g><g stroke="#EDEFE8" stroke-width=".8" opacity=".5"><path d="M20 128c30-10 60 6 90-4s50 4 70-6"/><path d="M20 136c34-8 56 8 92-2s48 6 68-4"/></g></svg>
+        </figure>
+        <div>
+          <h3>Kombucha-Derived Cellulose Non-Wovens: Growth Optimization, Mechanics, and Re-Processing</h3>
+          <p class="venue"><em>Biomacromolecules</em> 2026, 27 (10), 6738 &nbsp;·&nbsp; He, L. L.; Lopez, J. E.; Schiffman, J. D.</p>
+          <p class="gloss">We grew the mats, broke them, and grew them again. Drying route turned out to matter more than anything else — freeze-drying took ultimate tensile strength from 1.7 to 14.4 MPa against oven drying. Then we fermented a batch into infant clothing, dissolved it with cellulase once it was outgrown, and electrospun the recovered solids into fresh nanofibers.</p>
+          <a class="doi" href="https://doi.org/10.1021/acs.biomac.6c01335">10.1021/acs.biomac.6c01335</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <!-- SWAP POINT 3 — Figure 6A: the clear-zone assay plates. Pale halos spreading
+             across opaque PHB agar over 28 days. Reads well even at thumbnail size. -->
+        <figure class="plate" style="margin:0">
+          <svg viewBox="0 0 200 150" role="img" aria-label="Diagram of clearing zones spreading across a bioplastic plate"><g><circle cx="58" cy="75" r="40" fill="#1E4237"/><circle cx="58" cy="75" r="20" fill="#2F5A4C"/><circle cx="58" cy="75" r="9" fill="#D4A94A"/><circle cx="142" cy="75" r="40" fill="#1E4237"/><circle cx="142" cy="75" r="33" fill="#2F5A4C"/><circle cx="142" cy="75" r="9" fill="#D4A94A"/></g><g fill="none" stroke="#D4A94A" stroke-width="1" opacity=".7"><path d="M100 118h8m-8 0 3-3m-3 3 3 3"/></g><text x="58" y="132" fill="#8AA399" font-size="9" text-anchor="middle" font-family="sans-serif">day 4</text><text x="142" y="132" fill="#8AA399" font-size="9" text-anchor="middle" font-family="sans-serif">day 28</text></svg>
+        </figure>
+        <div>
+          <span class="flag">ACS Editors' Choice</span>
+          <h3>3D-Bioprinted Marine Bacteria for the Degradation of Polyhydroxybutyrate Bioplastics</h3>
+          <p class="venue"><em>ACS Applied Polymer Materials</em> 2026 &nbsp;·&nbsp; He, L. L.; Cai, H.; Gona, R. S.; <span style="white-space:nowrap">Rohe, T. C.;</span> Gangan, M. S.; Lai, T.; Sullivan, D. R.; Silberstein, M. N.; Meyer, A. S.</p>
+          <p class="gloss">A sticker you print out of living marine bacteria and stick onto a piece of bioplastic, which then eats it. The bacteria stay viable past three weeks, the degradation rate tunes with biomass and temperature, and the sticker peels off and works again on the next object. Twenty-one days of storage leaves its modulus and adhesion unchanged — which is what it would take to actually ship one.</p>
+          <a class="doi" href="https://doi.org/10.1021/acsapm.5c03370">10.1021/acsapm.5c03370</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <!-- SWAP POINT 4 — optional. A cross-sectional SEM (Figure 3C/D) works here,
+             or leave the drawn version. -->
+        <figure class="plate" style="margin:0">
+          <svg viewBox="0 0 200 150" role="img" aria-label="Diagram of stacked cellulose layers in cross-section"><g stroke="#D4A94A" stroke-width="1.2" fill="none" opacity=".8"><path d="M24 44c26-7 52 5 78-2s48 4 74-3"/><path d="M24 60c30-6 50 7 78 0s50 5 74-2"/><path d="M24 76c24-8 56 6 78-1s46 6 74-1"/><path d="M24 92c32-5 48 8 78 1s52 4 74-3"/><path d="M24 108c26-7 54 5 78-2s48 6 74-1"/></g><text x="100" y="134" fill="#8AA399" font-size="9" text-anchor="middle" font-family="sans-serif">stacked pellicle, cross-section</text></svg>
+        </figure>
+        <div>
+          <h3>Kombucha Bacterial Cellulose Obtained from Tea Fermentation for Biomedical Applications</h3>
+          <p class="venue"><em>ACS Applied Engineering Materials</em> 2026 &nbsp;·&nbsp; Bartolewska, M.; Kosik-Kozioł, A.; Krysiak, Z.; Nakielski, P.; Liguori, A.; He, L. L.; Voyer, A.; Focarete, M. L.; Schiffman, J. D.; Pierini, F.</p>
+          <p class="gloss">A collaboration with the Pierini group in Warsaw on where tea-fermented cellulose fits in biomedical use.</p>
+          <a class="doi" href="https://doi.org/10.1021/acsaenm.6c00708">10.1021/acsaenm.6c00708</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATENT + TALKS + AWARDS ============ -->
+<section class="band tint">
+  <div class="inner">
+    <div class="cols">
+      <div>
+        <h3>Patent</h3>
+        <ul class="stack">
+          <li>
+            <b>Degradation of Polyhydroxyalkanoate.</b> Published PCT International Patent Application WO2025019459A1, PCT/US2024/038110, 2025.
+            <span class="yr">Meyer, A. S.; He, L.; Omand, M.; Santoro, A. E.</span>
+          </li>
+        </ul>
+
+        <h3 style="margin-top:2.5rem">Talks &amp; posters</h3>
+        <ul class="stack">
+          <li><b>Kombucha Non-Woven Membranes for Sustainable Water Filtration</b><span class="yr">SIMSE, Northeastern Section ACS · Boston · 2026 — Poster Runner-Up</span></li>
+          <li><b>Kombucha Non-Woven Membranes for Sustainable Water Filtration</b><span class="yr">SEED: Synthetic Biology Engineering, Evolution &amp; Design · Denver · 2026</span></li>
+          <li><b>Sustainable and Recyclable Nonwoven Materials from Kombucha Biofilms</b><span class="yr">UMass–Bayreuth Polymer Conference · Amherst · 2024</span></li>
+          <li><b>3D-Printed Living Materials with Marine Bacteria for Bioplastics Degradation</b><span class="yr">SEED · Atlanta · 2024</span></li>
+          <li><b>3D-Printed Marine Bacteria for the Degradation of Bioplastics</b><span class="yr">Gordon Research Conference, Synthetic Biology · Newry, ME · 2023</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Recognition</h3>
+        <ul class="stack">
+          <li><b>Best Poster Award</b><span class="yr">High Resolution NMR Symposium, UMass Amherst · 2026</span></li>
+          <li><b>Three Minute Thesis — campus finalist</b><span class="yr">UMass Amherst · 2026</span></li>
+          <li><b>Biotechnology Training Program trainee</b><span class="yr">NIH T32 GM135096, with travel grant · 2026</span></li>
+          <li><b>Materials Science &amp; Engineering Doctoral Fellowship</b><span class="yr">UMass Amherst · 2025</span></li>
+          <li><b>Gold Medal, iGEM</b><span class="yr">International Genetically Engineered Machine · 2018</span></li>
+        </ul>
+
+        <h3 style="margin-top:2.5rem">Mentoring</h3>
+        <ul class="stack">
+          <li>Four undergraduate researchers at UMass; one took 3rd Place in the AIChE 2026 Environmental poster competition.<span class="yr">2024 — present</span></li>
+          <li>High school researchers, on filtration and data analysis.<span class="yr">2024 — present</span></li>
+          <li>University of Rochester iGEM team, on mechanical testing. Team earned a Gold Medal.<span class="yr">2023</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATH ============ -->
+<section class="band">
+  <div class="inner">
+    <h2>Path</h2>
+    <p class="band-intro">Bioengineering, then biology, then materials. The thread through all three is making living systems build something useful.</p>
+    <ul class="path">
+      <li>
+        <div class="role">PhD candidate, Materials Science &amp; Engineering</div>
+        <div class="where">The Schiffman Lab, University of Massachusetts Amherst</div>
+        <span class="yr">Jun 2024 — present · expected May 2028</span>
+      </li>
+      <li>
+        <div class="role">MS Biology · then research technician</div>
+        <div class="where">The Meyer Lab, University of Rochester</div>
+        <span class="yr">Jan 2022 — Apr 2024 · thesis defended June 2023</span>
+      </li>
+      <li>
+        <div class="role">PCR research technician</div>
+        <div class="where">Amoy Diagnostics (AmoyDx), Xiamen — eight biomarker products released</div>
+        <span class="yr">Mar — Dec 2020</span>
+      </li>
+      <li>
+        <div class="role">BE Bioengineering</div>
+        <div class="where">Fujian Normal University — iGEM team leader, 2018</div>
+        <span class="yr">2016 — 2020</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<footer class="band dark">
+  <div class="inner">
+    <div class="foot">
+      <!-- SWAP POINT 5 — your portrait.
+           <img src="images/louise.jpg" alt="Luying Louise He"> -->
+      <div class="portrait" aria-hidden="true"></div>
+      <div>
+        <h2>Get in touch</h2>
+        <p>I am looking for a summer 2027 industry internship in materials R&amp;D, formulation, or bioprocess work. Happy to talk about fermentation-grown materials with anyone, whether or not there is a job attached.</p>
+        <ul class="links">
+          <li><a href="mailto:luyinghe@umass.edu">luyinghe@umass.edu</a></li>
+          <li><a href="https://www.linkedin.com/in/luying-louise-he/">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/">Google&nbsp;Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0003-2181-0822">ORCID</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="colophon">Colors on this page are taken from the materials: polyaniline emeraldine green, colloidal gold, wet cellulose pellicle.</p>
+  </div>
+</footer>
+
+<script>
+// Deterministic fiber network — bacterial cellulose, random orientation, some bundling.
+(function(){
+  var svg=document.getElementById('mesh'); if(!svg) return;
+  var s=20260926; function rnd(){ s=(s*1664525+1013904223)%4294967296; return s/4294967296; }
+  var W=400,H=500,ns='http://www.w3.org/2000/svg',frag=document.createDocumentFragment(),paths=[];
+  for(var i=0;i<150;i++){
+    var x0=rnd()*W*1.3-W*.15, y0=rnd()*H*1.3-H*.15,
+        ang=rnd()*Math.PI*2, len=60+rnd()*220,
+        x1=x0+Math.cos(ang)*len, y1=y0+Math.sin(ang)*len,
+        mx=(x0+x1)/2+(rnd()-.5)*70, my=(y0+y1)/2+(rnd()-.5)*70,
+        bundle=rnd()>.82;
+    var p=document.createElementNS(ns,'path');
+    p.setAttribute('d','M'+x0.toFixed(1)+' '+y0.toFixed(1)+' Q'+mx.toFixed(1)+' '+my.toFixed(1)+' '+x1.toFixed(1)+' '+y1.toFixed(1));
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke', bundle ? '#D4A94A' : '#7E9A8E');
+    p.setAttribute('stroke-width', bundle ? (1.1+rnd()*1.4).toFixed(2) : (.35+rnd()*.5).toFixed(2));
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity', bundle ? (.5+rnd()*.35).toFixed(2) : (.3+rnd()*.45).toFixed(2));
+    frag.appendChild(p); paths.push(p);
+  }
+  svg.appendChild(frag);
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // One orchestrated moment: the network draws itself in, once.
+  paths.forEach(function(p,i){
+    var L=p.getTotalLength();
+    p.style.strokeDasharray=L; p.style.strokeDashoffset=L;
+    p.style.transition='stroke-dashoffset 1.1s cubic-bezier(.22,.61,.36,1) '+(i*7)+'ms';
+  });
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    paths.forEach(function(p){ p.style.strokeDashoffset=0; });
+  });});
+})();
+</script>
+</body>
+</html>
